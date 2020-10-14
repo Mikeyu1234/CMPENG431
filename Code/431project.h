@@ -76,3 +76,8 @@ double cycleTime(std::string configuration);
  * Helper function
  */
 int extractConfigPararm(std::string config, int paramIndex);
+
+
+unsigned int getdl1size(std::string configuration);
+unsigned int getil1size(std::string configuration);
+unsigned int getl2size(std::string configuration);

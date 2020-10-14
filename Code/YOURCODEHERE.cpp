@@ -17,6 +17,8 @@
 
 using namespace std;
 
+
+
 /*
  * Enter your PSU IDs here to select the appropriate scanning order.
  */
@@ -46,9 +48,79 @@ std::string generateCacheLatencyParams(string halfBackedConfig) {
 	//
 	//YOUR CODE BEGINS HERE
 	//
+	//cacheSize = num_Sets*assoc*blockSize;
+
+	int L1dSize, L1iSize, L2Size;
+	int L1d_lat_dm,L1i_lat_dm,L2_lat_dm;
+
+	vector <int> token;
+	
+
+	stringstream check1(halfBackedConfig);
+
+	string temp;
+
+	while (getline(check1,temp,' '))
+	{
+		token.push_back(atoi(temp.c_str()));
+	}
+	
+
+	L1dSize=getdl1size(halfBackedConfig)/1024;
+	L1iSize=getil1size(halfBackedConfig)/1024;
+	L2Size=getl2size(halfBackedConfig)/1024;
+
+	L1d_lat_dm = log2(L1dSize);
+	L1i_lat_dm = log2(L1iSize);
+	L2_lat_dm = log2(L2Size);
+
+	if (token[4] ==1) {
+
+		L1d_lat_dm +=1;
+	}
+
+	if (token[4] ==2) {
+
+		L1d_lat_dm += 2;
+	}
+
+	if (token[6] ==1){
+
+		L1i_lat_dm +=1;
+	}
+
+	if (token[6] ==2){
+
+		L1i_lat_dm +=2;
+	}
+
+	if(token[9]==1){
+		L2_lat_dm +=1;
+	}
+
+	if (token[9] ==2){
+
+		L2_lat_dm +=2;
+	}
+
+	
+
+	
+
+	 
+
+
+
 
 	// This is a dumb implementation.
 	latencySettings = "1 1 1";
+
+	latencySettings[0] = L1d_lat_dm -1 +'0';
+	latencySettings[2] = L1i_lat_dm -1 + '0';
+	latencySettings[4] = L2_lat_dm - 5 + '0';
+
+
+
 
 	//
 	//YOUR CODE ENDS HERE
