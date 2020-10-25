@@ -136,6 +136,84 @@ int validateConfiguration(std::string configuration) {
 
 	// FIXME - YOUR CODE HERE
 
+	int L1dblockSize, L1iblockSize, L2blocksize, L1dSize, L1iSize, L2Size, width;
+
+	int valid =0;
+
+	//get design parameter
+
+	/*
+	0 = width=( "1" "2" "4" "8" ) 
+	1 = fetchspeed=( "1" "2" ) 
+	2 = scheduling=( "-issue:inorder true -issue:wrongpath false" "-issue:inorder false -issue:wrongpath true" ) 
+	3 = ruusize=( "4" "8" "16" "32" "64" "128" ) 
+	4 = lsqsize=( "4" "8" "16" "32" )
+	5 = memport=( "1" "2" )
+	6 = dl1sets=( "32" "64" "128" "256" "512" "1024" "2048" "4096" "8192" )
+	7 = dl1assoc=( "1" "2" "4" )
+	8 = il1sets=( "32" "64" "128" "256" "512" "1024" "2048" "4096" "8192" )
+	9 = il1assoc=( "1" "2" "4" )
+	10 = ul2sets=( "256" "512" "1024" "2048" "4096" "8192" "16384" "32768" "65536" "131072" )
+	11 = ul2block=( "16" "32" "64" "128" )
+	12 = ul2assoc=( "1" "2" "4" "8" "16" ) 
+	13 = tlbsets=( "4" "8" "16" "32" "64" )
+	14 = dl1lat=( "1" "2" "3" "4" "5" "6" "7" )
+	15 = il1lat=( "1" "2" "3" "4" "5" "6" "7" )
+	16 = ul2lat=( "5" "6" "7" "8" "9" "10" "11" "12" "13" )
+	17 = branchsettings=( "-bpred perfect" "-bpred nottaken" "-bpred bimod -bpred:bimod 2048" "-bpred 2lev -bpred:2lev 1 1024 8 0" "-bpred 2lev -bpred:2lev 4 256 8 0" "-bpred comb -bpred:comb 1024" )
+	*/
+
+
+	width = 8 * pow(2, extractConfigPararm(configuration,0));
+	L1dblockSize = 8 * (1 << extractConfigPararm(configuration, 2));
+    L1iblockSize = 8 * (1 << extractConfigPararm(configuration, 2));
+    L2blocksize = 16 << extractConfigPararm(configuration, 8);
+
+    L1dSize = getdl1size(configuration) / 1024;
+    L1iSize = getil1size(configuration) / 1024;
+    L2Size = getl2size(configuration) / 1024;
+
+	//check conditions
+
+
+	 if(isNumDimConfiguration(configuration) == 1){
+        valid++;
+    }
+    if(width == L1dblockSize){
+        valid++;
+    }
+    if(L1dblockSize == L1iblockSize){
+        valid++;
+    }
+    if(L2blocksize >= 2 * L1iblockSize && L2blocksize <= 128){
+        valid++;
+    }
+    if(L1iSize >= 2 && L1iSize <= 64){
+        valid++;
+    }
+    if(L2Size >= 32 && L2Size <= 1024){
+        valid++;
+
+
+	//valid return 1 invalid return 0
+
+	if (valid == 6){
+
+		return 1;
+	}
+
+	else {
+
+		return 0;
+	}
+
+
+
+
+
+
+
+
 	// The below is a necessary, but insufficient condition for validating a
 	// configuration.
 	return isNumDimConfiguration(configuration);
@@ -150,8 +228,7 @@ int validateConfiguration(std::string configuration) {
  * In the current implementation, we start from the leftmost dimension and
  * explore all possible options for this dimension and then go to the next
  * dimension until the rightmost dimension.
- */
-std::string generateNextConfigurationProposal(std::string currentconfiguration,
+ */std::string generateNextConfigurationProposal(std::string currentconfiguration,
 		std::string bestEXECconfiguration, std::string bestEDPconfiguration,
 		int optimizeforEXEC, int optimizeforEDP) {
 
@@ -233,4 +310,5 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 	}
 	return nextconfiguration;
 }
+
 
