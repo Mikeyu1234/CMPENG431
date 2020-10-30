@@ -340,20 +340,20 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 		// 	ss << "0 ";
 		// }
 
-		for (int dim = 0;
-				dim < (NUM_DIMS - NUM_DIMS_DEPENDENT); ++dim) {
-					if (dim == currentDimIndex){
+		for (int i = 0;
+				i < (NUM_DIMS - NUM_DIMS_DEPENDENT); ++i) {
+					if (i == currentDimIndex){
 						int nextValue = extractConfigPararm(nextconfiguration, currentlyExploringDim) + 1;
 						if (nextValue == GLOB_dimensioncardinality[currentlyExploringDim]-1)
 							currentDimDone = true;
 						ss << nextValue << " ";
-					} else if (bestIndex[currentlyExploringDim]==1){
+					} else if (i < currentDimIndex){
 						ss << extractConfigPararm(bestConfig, currentlyExploringDim) << " ";
 					} else{
 						ss << extractConfigPararm(currentconfiguration, currentlyExploringDim) << " ";
 					}
 		}
-		cout << nextconfiguration;
+		// cout << nextconfiguration;
 		//
 		// Last NUM_DIMS_DEPENDENT3 configuration parameters are not independent.
 		// They depend on one or more parameters already set. Determine the
