@@ -378,7 +378,7 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 			isDSEComplete = true;
 		
 	}
-	cout << nextconfiguration
+	cout << nextconfiguration;
 	return nextconfiguration;
 }
 
