@@ -343,9 +343,9 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 		for (int dim = 0;
 				dim < (NUM_DIMS - NUM_DIMS_DEPENDENT); ++dim) {
 					if (dim == currentDimIndex){
-						if (nextconfiguration[currentlyExploringDim] == GLOB_dimensioncardinality[currentlyExploringDim]-1)
-							currentDimDone = true;
 						int nextValue = extractConfigPararm(nextconfiguration, currentlyExploringDim) + 1;
+						if (nextValue == GLOB_dimensioncardinality[currentlyExploringDim]-1)
+							currentDimDone = true;
 						ss << nextValue << " ";
 					} else if (bestIndex[dim]==1){
 						ss << extractConfigPararm(bestConfig, dim) << " ";
