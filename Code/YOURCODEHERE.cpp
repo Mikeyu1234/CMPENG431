@@ -347,10 +347,10 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 						if (nextValue == GLOB_dimensioncardinality[currentlyExploringDim]-1)
 							currentDimDone = true;
 						ss << nextValue << " ";
-					} else if (bestIndex[dim]==1){
-						ss << extractConfigPararm(bestConfig, dim) << " ";
+					} else if (bestIndex[currentlyExploringDim]==1){
+						ss << extractConfigPararm(bestConfig, currentlyExploringDim) << " ";
 					} else{
-						ss << "0 ";
+						ss << extractConfigPararm(currentconfiguration, currentlyExploringDim) << " ";
 					}
 		}
 		cout << nextconfiguration;
@@ -376,7 +376,6 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 		// Signal that DSE is complete after this configuration.
 		if (currentDimIndex == (NUM_DIMS - NUM_DIMS_DEPENDENT))
 			isDSEComplete = true;
-		return nextconfiguration;
 		
 	}
 	
