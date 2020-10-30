@@ -353,7 +353,7 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 						ss << "0 ";
 					}
 		}
-
+		cout << nextconfiguration;
 		//
 		// Last NUM_DIMS_DEPENDENT3 configuration parameters are not independent.
 		// They depend on one or more parameters already set. Determine the
@@ -378,7 +378,7 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 			isDSEComplete = true;
 		
 	}
-	cout << nextconfiguration;
+	
 	return nextconfiguration;
 }
 
