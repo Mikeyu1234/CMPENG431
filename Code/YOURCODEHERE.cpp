@@ -31,7 +31,13 @@ using namespace std;
  * Feel free to create more global variables to track progress of your
  * heuristic.
  */
-unsigned int currentlyExploringDim = 0;
+
+// Exploration order based on the types from PDF
+int EXPLORE[NUM_DIMS-NUM_DIMS_DEPENDENT] = {11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 0, 1};
+int currentDimIndex = 0;
+unsigned int currentlyExploringDim = EXPLORE[currentDimIndex];
+string bestConfig;
+int bestIndex[NUM_DIMS-NUM_DIMS_DEPENDENT] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 bool currentDimDone = false;
 bool isDSEComplete = false;
 
@@ -268,6 +274,8 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 	// Exploration order: FPU Cache BP Core
 	// Cache is 2-10, fpu is 11, BP is 12 -14, and core is 0 to 1. 
 	std::string nextconfiguration = currentconfiguration;
+
+
 	// Continue if proposed configuration is invalid or has been seen/checked before.
 	while (!validateConfiguration(nextconfiguration) ||
 		GLOB_seen_configurations[nextconfiguration]) {
@@ -277,47 +285,73 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 		if(isDSEComplete) {
 			return currentconfiguration;
 		}
-		int EXPLORE[NUM_DIMS-NUM_DIMS_DEPENDENT] = {11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 0, 1};
+
+		
 		// Exploring different parameters and continue when there is a change. 
-		for (int i = 0; i < NUM_DIMS - NUM_DIMS_DEPENDENT; i++){
-			if (nextconfiguration[EXPLORE[i]] != GLOB_dimensioncardinality[EXPLORE[i]] - 1){
-				nextconfiguration[EXPLORE[i]] += 1;
-				GLOB_seen_configurations[nextconfiguration] = 1;
-				break;
-			}
-		}
+		// for (int i = 0; i < NUM_DIMS - NUM_DIMS_DEPENDENT; i++){
+		// 	if (nextconfiguration[EXPLORE[i]] != GLOB_dimensioncardinality[EXPLORE[i]] - 1){
+		// 		nextconfiguration[EXPLORE[i]] += 1;
+		// 		GLOB_seen_configurations[nextconfiguration] = 1;
+		// 		break;
+		// 	}
+		// }
 
 		std::stringstream ss;
 
-		string bestConfig;
-		if (optimizeforEXEC == 1)
+		bool best = false;
+		if (optimizeforEXEC == 1){
 			bestConfig = bestEXECconfiguration;
+			best = true;
+		}
+			
 
-		if (optimizeforEDP == 1)
+		if (optimizeforEDP == 1){
 			bestConfig = bestEDPconfiguration;
-
-		// Fill in the dimensions already-scanned with the already-selected best
-		// value.
-		for (int dim = 0; dim < currentlyExploringDim; ++dim) {
-			ss << extractConfigPararm(bestConfig, dim) << " ";
+			best = true;
 		}
+		
+		if (best){
+			bestIndex[currentlyExploringDim] = 1;
+			currentDimIndex +=1;
+		} 
+			
 
-		// Handling for currently exploring dimension. This is a very dumb
-		// implementation.
-		int nextValue = extractConfigPararm(nextconfiguration,
-				currentlyExploringDim) + 1;
+		// // Fill in the dimensions already-scanned with the already-selected best
+		// // value.
+		// for (int dim = 0; dim < currentlyExploringDim; ++dim) {
+		// 	ss << extractConfigPararm(bestConfig, dim) << " ";
+		// }
 
-		if (nextValue >= GLOB_dimensioncardinality[currentlyExploringDim]) {
-			nextValue = GLOB_dimensioncardinality[currentlyExploringDim] - 1;
-			currentDimDone = true;
-		}
+		// // Handling for currently exploring dimension. This is a very dumb
+		// // implementation.
+		// int nextValue = extractConfigPararm(nextconfiguration,
+		// 		currentlyExploringDim) + 1;
 
-		ss << nextValue << " ";
+		// if (nextValue >= GLOB_dimensioncardinality[currentlyExploringDim]) {
+		// 	nextValue = GLOB_dimensioncardinality[currentlyExploringDim] - 1;
+		// 	currentDimDone = true;
+		// }
 
-		// Fill in remaining independent params with 0.
-		for (int dim = (currentlyExploringDim + 1);
+		// ss << nextValue << " ";
+
+		// // Fill in remaining independent params with 0.
+		// for (int dim = (currentlyExploringDim + 1);
+		// 		dim < (NUM_DIMS - NUM_DIMS_DEPENDENT); ++dim) {
+		// 	ss << "0 ";
+		// }
+
+		for (int dim = 0;
 				dim < (NUM_DIMS - NUM_DIMS_DEPENDENT); ++dim) {
-			ss << "0 ";
+					if (dim == currentDimIndex){
+						if (nextconfiguration[currentlyExploringDim] == GLOB_dimensioncardinality[currentlyExploringDim])
+							currentDimDone = true;
+						int nextValue = extractConfigPararm(nextconfiguration, currentlyExploringDim) + 1;
+						ss << nextValue << " ";
+					} else if (bestIndex[dim]==1){
+						ss << extractConfigPararm(bestConfig, dim) << " ";
+					} else{
+						ss << "0 ";
+					}
 		}
 
 		//
@@ -335,13 +369,14 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 
 		// Make sure we start exploring next dimension in next iteration.
 		if (currentDimDone) {
-			currentlyExploringDim++;
+			currentDimIndex++;
 			currentDimDone = false;
 		}
 
 		// Signal that DSE is complete after this configuration.
-		if (currentlyExploringDim == (NUM_DIMS - NUM_DIMS_DEPENDENT))
+		if (currentDimIndex == (NUM_DIMS - NUM_DIMS_DEPENDENT))
 			isDSEComplete = true;
+		
 	}
 	return nextconfiguration;
 }
