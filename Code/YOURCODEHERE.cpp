@@ -393,8 +393,8 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 		// Signal that DSE is complete after this configuration.
 		if (currentDimIndex == (NUM_DIMS - NUM_DIMS_DEPENDENT))
 			isDSEComplete = true;
-		cout << nextconfiguration <<endl;
-		cout << !validateConfiguration(nextconfiguration) <<" " <<GLOB_seen_configurations[nextconfiguration] <<endl;
+		// cout << nextconfiguration <<endl;
+		// cout << !validateConfiguration(nextconfiguration) <<" " <<GLOB_seen_configurations[nextconfiguration] <<endl;
 	}
 	
 	return nextconfiguration;
