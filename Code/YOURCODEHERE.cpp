@@ -343,7 +343,7 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 					if (doneDim[i] == 1){
 						// Explored and have best dim. 
 						ss << extractConfigPararm(bestConfig, i) <<" ";
-						// cout << "Adding best dim " << i <<endl;
+						cout << "Adding best dim " << i <<" " <<ss.str()<<endl;
 					} else {
 						if (i == currentlyExploringDim){
 							// check start from 0 since baseline does not
@@ -368,7 +368,7 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 						}
 					}
 		}
-		
+		cout << ss.str() <<endl;
 		//
 		// Last NUM_DIMS_DEPENDENT3 configuration parameters are not independent.
 		// They depend on one or more parameters already set. Determine the
