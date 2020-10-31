@@ -348,7 +348,10 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 							currentDimDone = true;
 						ss << nextValue << " ";
 					} else if (i < currentDimIndex){
-						ss << extractConfigPararm(bestConfig, currentlyExploringDim) << " ";
+						if (bestIndex[currentlyExploringDim] == 1)
+							ss << extractConfigPararm(bestConfig, currentlyExploringDim) << " ";
+						else
+							ss << '0 ';
 					} else{
 						ss << extractConfigPararm(currentconfiguration, currentlyExploringDim) << " ";
 					}
