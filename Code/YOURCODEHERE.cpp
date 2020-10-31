@@ -189,12 +189,10 @@ int validateConfiguration(std::string configuration) {
     // } else {
 	// 	return 0;
 	// }
-    if(width == L1dblockSize){
+    if(width <= L1dblockSize){
         valid++;
 		cout << "valid 1 ";
-    } else {
-		cout << "valid 1 failed: wdith:" << width << " l1size: "<< L1dblockSize;
-	}
+    }
     if(L1dblockSize == L1iblockSize){
         valid++;
 		cout << "valid 2 " ;
