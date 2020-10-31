@@ -345,12 +345,15 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 						// Explored and have best dim. 
 						ss << extractConfigPararm(bestConfig, i) <<" ";
 						cout << "Adding best dim " << i <<endl;
-					} else{
-						if (i == currentlyExploringDim){
+					} else {
+						if (doneDim[i] == -1 && extractConfigPararm(currentconfiguration, i) != 0){
+							ss << "0 ";
+							doneDim[i] = 0;
+						} else if (i == currentlyExploringDim){
 							int nextValue = extractConfigPararm(nextconfiguration, currentlyExploringDim) + 1;
 							if (nextValue == GLOB_dimensioncardinality[i]-1){
 								currentDimDone = true;
-								doneDim[i] = 1;
+								
 							}
 							ss << nextValue << " "; 
 							cout << "Adding current dim" << i <<endl;
@@ -376,6 +379,7 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 
 		// Make sure we start exploring next dimension in next iteration.
 		if (currentDimDone) {
+			doneDim[currentDimIndex] = 1;
 			currentDimIndex++;
 			currentDimDone = false;
 		}
