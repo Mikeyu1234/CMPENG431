@@ -191,18 +191,23 @@ int validateConfiguration(std::string configuration) {
 	// }
     if(width == L1dblockSize){
         valid++;
+		cout << "valid 1 " ;
     }
     if(L1dblockSize == L1iblockSize){
         valid++;
+		cout << "valid 2 " ;
     }
     if(L2blocksize >= 2 * L1iblockSize && L2blocksize <= 128){
         valid++;
+		cout << "valid 3 " ;
     }
     if(L1iSize >= 2 && L1iSize <= 64){
         valid++;
+		cout << "valid 4 " ;
     }
     if(L2Size >= 32 && L2Size <= 1024){
         valid++;
+		cout << "valid 5 " ;
 	}
 
 	//valid return 1 invalid return 0
@@ -338,7 +343,7 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 					if (doneDim[i] == 1){
 						// Explored and have best dim. 
 						ss << extractConfigPararm(bestConfig, i) <<" ";
-						cout << "Adding best dim " << " " <<ss.str()<<endl;
+						// cout << "Adding best dim " << " " <<ss.str()<<endl;
 					} else {
 						if (i == currentlyExploringDim){
 							// check start from 0 since baseline does not
@@ -347,10 +352,10 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 							doneDim[i] = 0;
 							} else {
 								// increment value by 1
-								int nextValue = extractConfigPararm(nextconfiguration, currentlyExploringDim) + 1;
+								int nextValue = extractConfigPararm(nextconfiguration, i) + 1;
 								if (nextValue >= GLOB_dimensioncardinality[i]){
 									// if exccedds, reset the dim
-									nextValue = GLOB_dimensioncardinality[currentlyExploringDim] - 1;
+									nextValue = GLOB_dimensioncardinality[i] - 1;
 									currentDimDone = true;
 								}
 								ss << nextValue << " "; 
