@@ -184,9 +184,11 @@ int validateConfiguration(std::string configuration) {
 	//check conditions
 
 
-	 if(isNumDimConfiguration(configuration) == 1){
-        valid++;
-    }
+	// if(isNumDimConfiguration(configuration) == 1){
+    //     valid++;
+    // } else {
+	// 	return 0;
+	// }
     if(width == L1dblockSize){
         valid++;
     }
@@ -205,17 +207,10 @@ int validateConfiguration(std::string configuration) {
 
 	//valid return 1 invalid return 0
 
-	if (valid == 6){
-
-		return 1;
-	}
-
-	else {
+	if (valid != 5){
 
 		return 0;
 	}
-
-
 
 
 
