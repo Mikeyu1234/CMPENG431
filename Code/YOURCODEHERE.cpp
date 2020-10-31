@@ -344,6 +344,7 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 					if (doneDim[i] == 1){
 						// Explored and have best dim. 
 						ss << extractConfigPararm(bestConfig, i) <<" ";
+						cout << "Adding best dim " << i <<endl;
 					} else{
 						if (i == currentlyExploringDim){
 							int nextValue = extractConfigPararm(nextconfiguration, currentlyExploringDim) + 1;
@@ -352,8 +353,10 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 								doneDim[i] = 1;
 							}
 							ss << nextValue << " "; 
+							cout << "Adding current dim" << i <<endl;
 						} else {
 							ss << extractConfigPararm(currentconfiguration, i) << " ";
+							cout << "Adding rest dim " << i <<endl;
 						}
 					}
 		}
