@@ -37,7 +37,8 @@ int EXPLORE[NUM_DIMS-NUM_DIMS_DEPENDENT] = {11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 
 int currentDimIndex = 0;
 unsigned int currentlyExploringDim = EXPLORE[currentDimIndex];
 string bestConfig;
-int bestIndex[NUM_DIMS-NUM_DIMS_DEPENDENT] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+int doneDim[NUM_DIMS-NUM_DIMS_DEPENDENT] = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
+// int bestIndex[NUM_DIMS-NUM_DIMS_DEPENDENT] = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
 bool currentDimDone = false;
 bool isDSEComplete = false;
 
@@ -298,28 +299,25 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 
 		std::stringstream ss;
 
-		bool best = false;
+		// bool best = false;
 		if (optimizeforEXEC == 1){
 			bestConfig = bestEXECconfiguration;
-			best = true;
 		}
 			
 
 		if (optimizeforEDP == 1){
 			bestConfig = bestEDPconfiguration;
-			best = true;
 		}
 		
-		if (best){
-			bestIndex[currentlyExploringDim] = 1;
-			currentDimIndex +=1;
-		} 
+		// if (best){
+		// 	bestIndex[currentlyExploringDim] = extractConfigPararm(bestConfig, currentlyExploringDim);
+		// } 
 			
 
 		// // Fill in the dimensions already-scanned with the already-selected best
 		// // value.
-		// for (int dim = 0; dim < currentlyExploringDim; ++dim) {
-		// 	ss << extractConfigPararm(bestConfig, dim) << " ";
+		// for (int dim = 0; dim < currentDimIndex; ++dim) {
+		// 	ss << extractConfigPararm(bestConfig, EXPLORE[dim]) << " ";
 		// }
 
 		// // Handling for currently exploring dimension. This is a very dumb
@@ -329,10 +327,11 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 
 		// if (nextValue >= GLOB_dimensioncardinality[currentlyExploringDim]) {
 		// 	nextValue = GLOB_dimensioncardinality[currentlyExploringDim] - 1;
+		// 	ss << bestIndex[currentconfiguration] << " ";
 		// 	currentDimDone = true;
+		// } else {
+		// 	ss << nextValue << " ";
 		// }
-
-		// ss << nextValue << " ";
 
 		// // Fill in remaining independent params with 0.
 		// for (int dim = (currentlyExploringDim + 1);
@@ -342,25 +341,19 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 
 		for (int i = 0;
 				i < (NUM_DIMS - NUM_DIMS_DEPENDENT); ++i) {
-					if (i == currentDimIndex){
-						cout << "i == current DIM index" << endl;
-						int nextValue = extractConfigPararm(nextconfiguration, currentlyExploringDim) + 1;
-						if (nextValue == GLOB_dimensioncardinality[currentlyExploringDim]-1)
-							currentDimDone = true;
-						ss << nextValue << " ";
-					} else if (i < currentDimIndex){
-						if (bestIndex[currentlyExploringDim] == 1){
-							ss << extractConfigPararm(bestConfig, currentlyExploringDim) << " ";
-							cout << "i == explored: BEST" << endl;
-						}
-						else{
-							ss << "0 ";
-							cout << "i == explored: 0" << endl;
-						}
-							
+					if (doneDim[i] == 1){
+						// Explored and have best dim. 
+						ss << extractConfigPararm(bestConfig, i) <<" ";
 					} else{
-						cout << "i == not explored" << endl;
-						ss << extractConfigPararm(currentconfiguration, currentlyExploringDim) << " ";
+						if (i == currentlyExploringDim){
+							int nextValue = extractConfigPararm(nextconfiguration, currentlyExploringDim) + 1;
+							if (nextValue == GLOB_dimensioncardinality[i]-1){
+								currentDimDone = true;
+							}
+							ss << nextValue << " "; 
+						} else {
+							ss << extractConfigPararm(currentconfiguration, i) << " ";
+						}
 					}
 		}
 		// cout << nextconfiguration;
@@ -379,6 +372,7 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 
 		// Make sure we start exploring next dimension in next iteration.
 		if (currentDimDone) {
+			doneDim[currentDimIndex] = 1;
 			currentDimIndex++;
 			currentDimDone = false;
 		}
