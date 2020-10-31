@@ -327,7 +327,6 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 
 		// if (nextValue >= GLOB_dimensioncardinality[currentlyExploringDim]) {
 		// 	nextValue = GLOB_dimensioncardinality[currentlyExploringDim] - 1;
-		// 	ss << bestIndex[currentconfiguration] << " ";
 		// 	currentDimDone = true;
 		// } else {
 		// 	ss << nextValue << " ";
@@ -346,17 +345,19 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 						ss << extractConfigPararm(bestConfig, i) <<" ";
 						cout << "Adding best dim " << i <<endl;
 					} else {
-						if (doneDim[i] == -1 && extractConfigPararm(currentconfiguration, i) != 0){
+						if (i == currentlyExploringDim){
+							if (doneDim[i] == -1 && extractConfigPararm(currentconfiguration, i) != 0){
 							ss << "0 ";
 							doneDim[i] = 0;
-						} else if (i == currentlyExploringDim){
-							int nextValue = extractConfigPararm(nextconfiguration, currentlyExploringDim) + 1;
-							if (nextValue == GLOB_dimensioncardinality[i]-1){
-								currentDimDone = true;
-								
+							} else {
+								int nextValue = extractConfigPararm(nextconfiguration, currentlyExploringDim) + 1;
+								if (nextValue >= GLOB_dimensioncardinality[i]){
+									nextValue = GLOB_dimensioncardinality[currentlyExploringDim] - 1;
+									currentDimDone = true;
+								}
+								ss << nextValue << " "; 
+								cout << "Adding current dim" << i <<endl;
 							}
-							ss << nextValue << " "; 
-							cout << "Adding current dim" << i <<endl;
 						} else {
 							ss << extractConfigPararm(currentconfiguration, i) << " ";
 							cout << "Adding rest dim " << i <<endl;
