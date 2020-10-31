@@ -191,8 +191,10 @@ int validateConfiguration(std::string configuration) {
 	// }
     if(width == L1dblockSize){
         valid++;
-		cout << "valid 1 " ;
-    }
+		cout << "valid 1 ";
+    } else {
+		cout << "valid 1 failed: wdith:" << width << " l1size: "<< L1dblockSize;
+	}
     if(L1dblockSize == L1iblockSize){
         valid++;
 		cout << "valid 2 " ;
@@ -207,7 +209,7 @@ int validateConfiguration(std::string configuration) {
     }
     if(L2Size >= 32 && L2Size <= 1024){
         valid++;
-		cout << "valid 5 " ;
+		cout << "valid 5 " <<endl;
 	}
 
 	//valid return 1 invalid return 0
@@ -386,7 +388,7 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 		if (currentDimDone) {
 			doneDim[currentlyExploringDim] = 1;
 			currentDimIndex += 1;
-			currentlyExploringDim =  EXPLORE[currentDimIndex];
+			currentlyExploringDim = EXPLORE[currentDimIndex];
 			currentDimDone = false;
 		}
 
