@@ -381,7 +381,7 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 		// Make sure we start exploring next dimension in next iteration.
 		if (currentDimDone) {
 			doneDim[currentDimIndex] = 1;
-			currentDimIndex++;
+			currentlyExploringDim =  EXPLORE[currentDimIndex++];
 			currentDimDone = false;
 		}
 
