@@ -349,7 +349,7 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 							int nextValue = extractConfigPararm(nextconfiguration, currentlyExploringDim) + 1;
 							if (nextValue == GLOB_dimensioncardinality[i]-1){
 								currentDimDone = true;
-								doneDim[currentDimIndex] = 1;
+								doneDim[i] = 1;
 							}
 							ss << nextValue << " "; 
 						} else {
