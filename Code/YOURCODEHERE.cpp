@@ -346,12 +346,15 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 						// cout << "Adding best dim " << i <<endl;
 					} else {
 						if (i == currentlyExploringDim){
+							// check start from 0 since baseline does not
 							if (doneDim[i] == -1 && extractConfigPararm(currentconfiguration, i) != 0){
 							ss << "0 ";
 							doneDim[i] = 0;
 							} else {
+								// increment value by 1
 								int nextValue = extractConfigPararm(nextconfiguration, currentlyExploringDim) + 1;
 								if (nextValue >= GLOB_dimensioncardinality[i]){
+									// if exccedds, reset the dim
 									nextValue = GLOB_dimensioncardinality[currentlyExploringDim] - 1;
 									currentDimDone = true;
 								}
@@ -359,12 +362,13 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 								// cout << "Adding current dim" << i <<endl;
 							}
 						} else {
+							// adding rest dims from previous
 							ss << extractConfigPararm(currentconfiguration, i) << " ";
 							// cout << "Adding rest dim " << i <<endl;
 						}
 					}
 		}
-		cout << ss.str()<<endl;
+		
 		//
 		// Last NUM_DIMS_DEPENDENT3 configuration parameters are not independent.
 		// They depend on one or more parameters already set. Determine the
@@ -388,7 +392,7 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 		// Signal that DSE is complete after this configuration.
 		if (currentDimIndex == (NUM_DIMS - NUM_DIMS_DEPENDENT))
 			isDSEComplete = true;
-		
+		cout << !validateConfiguration(nextconfiguration) <<" " <<GLOB_seen_configurations[nextconfiguration] <<endl;
 	}
 	
 	return nextconfiguration;
