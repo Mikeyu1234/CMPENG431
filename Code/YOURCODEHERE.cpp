@@ -343,7 +343,7 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 					if (doneDim[i] == 1){
 						// Explored and have best dim. 
 						ss << extractConfigPararm(bestConfig, i) <<" ";
-						cout << "Adding best dim " << i <<" " <<ss.str()<<endl;
+						cout << "Adding best dim " << " " <<ss.str()<<endl;
 					} else {
 						if (i == currentlyExploringDim){
 							// check start from 0 since baseline does not
@@ -384,7 +384,7 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 
 		// Make sure we start exploring next dimension in next iteration.
 		if (currentDimDone) {
-			doneDim[currentDimIndex] = 1;
+			doneDim[currentlyExploringDim] = 1;
 			currentlyExploringDim =  EXPLORE[currentDimIndex++];
 			currentDimDone = false;
 		}
