@@ -368,7 +368,7 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 						}
 					}
 		}
-		cout << ss.str() <<endl;
+		
 		//
 		// Last NUM_DIMS_DEPENDENT3 configuration parameters are not independent.
 		// They depend on one or more parameters already set. Determine the
@@ -393,6 +393,7 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 		// Signal that DSE is complete after this configuration.
 		if (currentDimIndex == (NUM_DIMS - NUM_DIMS_DEPENDENT))
 			isDSEComplete = true;
+		cout << nextconfiguration <<endl;
 		cout << !validateConfiguration(nextconfiguration) <<" " <<GLOB_seen_configurations[nextconfiguration] <<endl;
 	}
 	
