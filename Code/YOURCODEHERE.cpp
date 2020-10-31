@@ -349,11 +349,15 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 							currentDimDone = true;
 						ss << nextValue << " ";
 					} else if (i < currentDimIndex){
-						if (bestIndex[currentlyExploringDim] == 1)
+						if (bestIndex[currentlyExploringDim] == 1){
 							ss << extractConfigPararm(bestConfig, currentlyExploringDim) << " ";
-						else
+							cout << "i == explored: BEST" << endl;
+						}
+						else{
 							ss << "0 ";
-						cout << "i == explored: "<< ss << endl;
+							cout << "i == explored: 0" << endl;
+						}
+							
 					} else{
 						cout << "i == not explored" << endl;
 						ss << extractConfigPararm(currentconfiguration, currentlyExploringDim) << " ";
