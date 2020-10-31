@@ -343,6 +343,7 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 		for (int i = 0;
 				i < (NUM_DIMS - NUM_DIMS_DEPENDENT); ++i) {
 					if (i == currentDimIndex){
+						cout << "i == current DIM index" << endl;
 						int nextValue = extractConfigPararm(nextconfiguration, currentlyExploringDim) + 1;
 						if (nextValue == GLOB_dimensioncardinality[currentlyExploringDim]-1)
 							currentDimDone = true;
@@ -351,8 +352,10 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 						if (bestIndex[currentlyExploringDim] == 1)
 							ss << extractConfigPararm(bestConfig, currentlyExploringDim) << " ";
 						else
-							ss << '0 ';
+							ss << "0 ";
+						cout << "i == explored: "<< ss << endl;
 					} else{
+						cout << "i == not explored" << endl;
 						ss << extractConfigPararm(currentconfiguration, currentlyExploringDim) << " ";
 					}
 		}
