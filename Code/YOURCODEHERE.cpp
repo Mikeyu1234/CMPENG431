@@ -349,7 +349,7 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 		}
 
 		// Signal that DSE is complete after this configuration.
-		if (currentDimIndex == (NUM_DIMS - NUM_DIMS_DEPENDENT)){
+		if (currentDimIndex == (NUM_DIMS - NUM_DIMS_DEPENDENT)-1){
 			isDSEComplete = true;
 			// else{
 			// 	// pass the current best to the baseline and retrain by reseting the table.
