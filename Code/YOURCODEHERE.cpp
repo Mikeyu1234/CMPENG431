@@ -357,7 +357,6 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 				firstBest = true;
 			}
 		}
-			isDSEComplete = true;
 		cout << nextconfiguration <<endl;
 		cout << !validateConfiguration(nextconfiguration) <<" " <<GLOB_seen_configurations[nextconfiguration] <<endl;
 	}
