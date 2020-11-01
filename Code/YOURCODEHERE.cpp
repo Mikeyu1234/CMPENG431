@@ -41,6 +41,7 @@ int doneDim[NUM_DIMS-NUM_DIMS_DEPENDENT] = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
 // int bestIndex[NUM_DIMS-NUM_DIMS_DEPENDENT] = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
 bool currentDimDone = false;
 bool isDSEComplete = false;
+bool firstBest = false;
 
 /*
  * Given a half-baked configuration containing cache properties, generate
@@ -240,9 +241,9 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 
 		// Check if DSE has been completed before and return current
 		// configuration.
-		// if(isDSEComplete) {
-		// 	return currentconfiguration;
-		// }
+		if(isDSEComplete) {
+			return currentconfiguration;
+		}
 
 		
 		// Exploring different parameters and continue when there is a change. 
@@ -349,14 +350,14 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 
 		// Signal that DSE is complete after this configuration.
 		if (currentDimIndex == (NUM_DIMS - NUM_DIMS_DEPENDENT)){
-			if (isDSEComplete)
-				return nextconfiguration;
+			if (firstBest)
+				isDSEComplete = true;
 			else{
 				// pass the current best to the baseline and retrain by reseting the table.
 				for (int i=0; i<NUM_DIMS-NUM_DIMS_DEPENDENT; i++)
 					doneDim[i] = -1;
 				currentDimIndex = 0;
-				isDSEComplete = true;
+				firstBest = true;
 			}
 		}
 		// cout << nextconfiguration <<endl;
