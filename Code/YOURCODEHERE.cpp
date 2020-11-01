@@ -83,6 +83,16 @@ std::string generateCacheLatencyParams(string halfBackedConfig) {
 	L1i_lat_dm = log2(L1iSize);
 	L2_lat_dm = log2(L2Size);
 
+	//border detection
+	if(L1dSize<2 || L1dSize>64)
+    	return "0 0 0";
+
+    	if(L1iSize<2 || L1iSize>64)
+    	return "0 0 0";
+
+    	if(L2Size<32 || L2Size>1024)
+    	return "0 0 0";
+
 	if (token[4] ==1) {
 
 		L1d_lat_dm +=1;
@@ -112,22 +122,50 @@ std::string generateCacheLatencyParams(string halfBackedConfig) {
 		L2_lat_dm +=2;
 	}
 
+
+	//update for l2
+	if(token[9] ==3){
+		L2_lat_dm +=3;
+	}	
+	
+	if(token[9] ==4){
+		L2_lat_dm+=4;
+	}
+
 	
 
-	
+	/* 
+	cout<<L1d_lat_dm<<endl;
+	cout<< L1i_lat_dm<<endl;
+	cout<<L2_lat_dm<<endl;
 
-	 
-
-
-
-
+*/
 	// This is a dumb implementation.
-	latencySettings = "1 1 1";
+	//latencySettings = "1 1 1";
 
+	/*
+ * origional latency output
 	latencySettings[0] = L1d_lat_dm -1 +'0';
 	latencySettings[2] = L1i_lat_dm -1 + '0';
 	latencySettings[4] = L2_lat_dm - 5 + '0';
+	*/
+	
+	L1d_lat_dm = L1d_lat_dm -1;
+	L1i_lat_dm = L1i_lat_dm -1;
+	L2_lat_dm = L2_lat_dm-5;
+//	cout<<L1d_lat_dm<<endl;
+//	cout<<L1i_lat_dm<<endl;
+//	cout<<L2_lat_dm<<endl;
 
+	char c_string[5];
+	sprintf(c_string, "%d", L1d_lat_dm);
+	latencySettings += std::string(c_string);
+	latencySettings += " ";
+	sprintf(c_string, "%d", L1i_lat_dm);
+	latencySettings += std::string(c_string);
+	latencySettings += " ";
+	sprintf(c_string, "%d", L2_lat_dm);
+	latencySettings += std::string(c_string);
 
 
 
