@@ -173,7 +173,7 @@ int validateConfiguration(std::string configuration) {
         valid++;
 		// cout << "valid 1 ";
     }
-    if(L1dSize == L1iblockSize){
+    if(L1iSize == L1dblockSize){
         valid++;
 		// cout << "valid 2 " ;
     }
