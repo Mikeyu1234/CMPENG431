@@ -353,6 +353,8 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 			if (firstBest)
 				isDSEComplete = true;
 			else{
+				for (int i=0; i<NUM_DIMS-NUM_DIMS_DEPENDENT; i++)
+					doneDim[i] = -1;
 				currentDimIndex = 0;
 				firstBest = true;
 			}
