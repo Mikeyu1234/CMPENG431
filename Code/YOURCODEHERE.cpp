@@ -169,7 +169,7 @@ int validateConfiguration(std::string configuration) {
     // } else {
 	// 	return 0;
 	// }
-    if(L1dblockSize % width == 0){
+    if(width <= L1dblockSize){
         valid++;
 		// cout << "valid 1 ";
     }
@@ -350,15 +350,14 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 
 		// Signal that DSE is complete after this configuration.
 		if (currentDimIndex == (NUM_DIMS - NUM_DIMS_DEPENDENT)){
-			if (firstBest)
-				isDSEComplete = true;
-			else{
-				// pass the current best to the baseline and retrain by reseting the table.
-				for (int i=0; i<NUM_DIMS-NUM_DIMS_DEPENDENT; i++)
-					doneDim[i] = -1;
-				currentDimIndex = 0;
-				firstBest = true;
-			}
+			isDSEComplete = true;
+			// else{
+			// 	// pass the current best to the baseline and retrain by reseting the table.
+			// 	for (int i=0; i<NUM_DIMS-NUM_DIMS_DEPENDENT; i++)
+			// 		doneDim[i] = -1;
+			// 	currentDimIndex = 0;
+			// 	firstBest = true;
+			// }
 		}
 		// cout << nextconfiguration <<endl;
 		// cout << !validateConfiguration(nextconfiguration) <<" " <<GLOB_seen_configurations[nextconfiguration] <<endl;
