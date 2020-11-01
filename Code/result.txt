@@ -1,0 +1,133 @@
+Iter # 0 config: 0 0 0 5 0 5 0 2 2 2 0 0 0 1 2 2 2 5 : running simulation
+             proposedGeoEDP=1.30307e-07, bestEDP=1.30307e-07, proposedGeoTime=0.000373001, bestTime=0.000373001
+
+Iter # 1 config: 0 0 0 5 0 5 0 2 2 2 0 2 0 1 2 2 2 5 : running simulation
+             proposedGeoEDP=1.61463e-07, bestEDP=1.30307e-07, proposedGeoTime=0.000426286, bestTime=0.000373001
+
+Iter # 2 config: 0 0 0 5 0 5 0 2 2 2 0 3 0 1 2 2 2 5 : running simulation
+             proposedGeoEDP=2.07804e-07, bestEDP=1.30307e-07, proposedGeoTime=0.000497333, bestTime=0.000373001
+
+Iter # 3 config: 0 0 1 5 0 5 0 2 2 2 0 0 0 1 2 3 3 5 : running simulation
+             proposedGeoEDP=9.04834e-08, bestEDP=9.04834e-08, proposedGeoTime=0.000309825, bestTime=0.000309825
+
+Iter # 4 config: 0 0 2 5 0 5 0 2 2 2 0 0 0 1 2 4 4 5 : running simulation
+             proposedGeoEDP=8.17212e-08, bestEDP=8.17212e-08, proposedGeoTime=0.00028732, bestTime=0.00028732
+
+Field not a digit: 15
+Iter # 5 config: 0 0 2 1 0 5 0 2 2 2 0 0 0 1 2 0 4 5 : running simulation
+             proposedGeoEDP=7.22683e-08, bestEDP=7.22683e-08, proposedGeoTime=0.000270042, bestTime=0.000270042
+
+Iter # 6 config: 0 0 2 2 0 5 0 2 2 2 0 0 0 1 2 1 4 5 : running simulation
+             proposedGeoEDP=7.07747e-08, bestEDP=7.07747e-08, proposedGeoTime=0.00026781, bestTime=0.00026781
+
+Iter # 7 config: 0 0 2 3 0 5 0 2 2 2 0 0 0 1 2 2 4 5 : running simulation
+             proposedGeoEDP=7.1931e-08, bestEDP=7.07747e-08, proposedGeoTime=0.00027075, bestTime=0.00026781
+
+Iter # 8 config: 0 0 2 4 0 5 0 2 2 2 0 0 0 1 2 3 4 5 : running simulation
+             proposedGeoEDP=7.6314e-08, bestEDP=7.07747e-08, proposedGeoTime=0.000278737, bestTime=0.00026781
+
+Iter # 9 config: 0 0 2 6 0 5 0 2 2 2 0 0 0 1 2 5 4 5 : running simulation
+             proposedGeoEDP=8.78388e-08, bestEDP=7.07747e-08, proposedGeoTime=0.000295845, bestTime=0.00026781
+
+Iter # 10 config: 0 0 2 7 0 5 0 2 2 2 0 0 0 1 2 6 4 5 : running simulation
+             proposedGeoEDP=9.58366e-08, bestEDP=7.07747e-08, proposedGeoTime=0.000305658, bestTime=0.00026781
+
+Iter # 11 config: 0 0 2 8 0 5 0 2 2 2 0 0 0 1 2 7 4 5 : running simulation
+             proposedGeoEDP=1.1058e-07, bestEDP=7.07747e-08, proposedGeoTime=0.000315722, bestTime=0.00026781
+
+Iter # 12 config: 0 0 2 2 1 5 0 2 2 2 0 0 0 1 2 3 4 5 : running simulation
+             proposedGeoEDP=7.52338e-08, bestEDP=7.07747e-08, proposedGeoTime=0.000278556, bestTime=0.00026781
+
+Iter # 13 config: 0 0 2 2 2 5 0 2 2 2 0 0 0 1 2 5 4 5 : running simulation
+             proposedGeoEDP=8.41079e-08, bestEDP=7.07747e-08, proposedGeoTime=0.000295814, bestTime=0.00026781
+
+Iter # 14 config: 0 0 2 2 0 1 0 2 2 2 0 0 0 1 2 1 0 5 : running simulation
+             proposedGeoEDP=1.02371e-07, bestEDP=7.07747e-08, proposedGeoTime=0.000339155, bestTime=0.00026781
+
+Iter # 15 config: 0 0 2 2 0 2 0 2 2 2 0 0 0 1 2 1 1 5 : running simulation
+             proposedGeoEDP=9.59287e-08, bestEDP=7.07747e-08, proposedGeoTime=0.000328173, bestTime=0.00026781
+
+Iter # 16 config: 0 0 2 2 0 3 0 2 2 2 0 0 0 1 2 1 2 5 : running simulation
+             proposedGeoEDP=8.32023e-08, bestEDP=7.07747e-08, proposedGeoTime=0.00030527, bestTime=0.00026781
+
+Iter # 17 config: 0 0 2 2 0 4 0 2 2 2 0 0 0 1 2 1 3 5 : running simulation
+             proposedGeoEDP=7.61353e-08, bestEDP=7.07747e-08, proposedGeoTime=0.000286387, bestTime=0.00026781
+
+Iter # 18 config: 0 0 2 2 0 6 0 2 2 2 0 0 0 1 2 1 5 5 : running simulation
+             proposedGeoEDP=7.35444e-08, bestEDP=7.07747e-08, proposedGeoTime=0.000263094, bestTime=0.000263094
+
+Iter # 19 config: 0 0 2 2 0 6 0 0 2 2 0 0 0 1 2 1 5 3 : running simulation
+             proposedGeoEDP=7.24924e-08, bestEDP=7.07747e-08, proposedGeoTime=0.000261533, bestTime=0.000261533
+
+Iter # 20 config: 0 0 2 2 0 6 0 1 2 2 0 0 0 1 2 1 5 4 : running simulation
+             proposedGeoEDP=7.30376e-08, bestEDP=7.07747e-08, proposedGeoTime=0.00026231, bestTime=0.000261533
+
+Iter # 21 config: 0 0 2 2 0 6 0 3 2 2 0 0 0 1 2 1 5 6 : running simulation
+             proposedGeoEDP=7.39475e-08, bestEDP=7.07747e-08, proposedGeoTime=0.000263872, bestTime=0.000261533
+
+Iter # 22 config: 0 0 2 2 0 6 0 4 2 2 0 0 0 1 2 1 5 7 : running simulation
+             proposedGeoEDP=7.49097e-08, bestEDP=7.07747e-08, proposedGeoTime=0.000264651, bestTime=0.000261533
+
+Iter # 23 config: 0 0 2 2 0 6 0 0 3 2 0 0 0 1 2 1 5 4 : running simulation
+             proposedGeoEDP=6.42667e-08, bestEDP=6.42667e-08, proposedGeoTime=0.000257418, bestTime=0.000257418
+
+Iter # 24 config: 0 0 2 2 0 6 0 0 3 0 0 0 0 1 2 1 5 0 : running simulation
+             proposedGeoEDP=6.73279e-08, bestEDP=6.42667e-08, proposedGeoTime=0.000265017, bestTime=0.000257418
+
+Iter # 25 config: 0 0 2 2 0 6 0 0 3 1 0 0 0 1 2 1 5 2 : running simulation
+             proposedGeoEDP=6.32871e-08, bestEDP=6.32871e-08, proposedGeoTime=0.000255732, bestTime=0.000255732
+
+Iter # 26 config: 0 0 2 2 0 6 0 0 3 3 0 0 0 1 2 1 5 3 : running simulation
+             proposedGeoEDP=6.4311e-08, bestEDP=6.32871e-08, proposedGeoTime=0.000256457, bestTime=0.000255732
+
+Iter # 27 config: 0 0 2 2 0 6 0 0 3 4 0 0 0 1 2 1 5 4 : running simulation
+             proposedGeoEDP=6.52694e-08, bestEDP=6.32871e-08, proposedGeoTime=0.000257418, bestTime=0.000255732
+
+Iter # 28 config: 0 0 2 2 0 6 0 0 3 1 1 0 0 1 2 1 5 2 : running simulation
+             proposedGeoEDP=6.33162e-08, bestEDP=6.32871e-08, proposedGeoTime=0.000255796, bestTime=0.000255732
+
+Iter # 29 config: 0 0 2 2 0 6 0 0 3 1 2 0 0 1 2 1 5 2 : running simulation
+             proposedGeoEDP=6.3366e-08, bestEDP=6.32871e-08, proposedGeoTime=0.000255898, bestTime=0.000255732
+
+Iter # 30 config: 0 0 2 2 0 6 0 0 3 1 0 0 1 1 2 1 5 2 : running simulation
+             proposedGeoEDP=4.05454e-08, bestEDP=4.05454e-08, proposedGeoTime=0.000194337, bestTime=0.000194337
+
+Iter # 31 config: 0 0 2 2 0 6 0 0 3 1 0 0 2 1 2 1 5 2 : running simulation
+             proposedGeoEDP=4.08552e-08, bestEDP=4.05454e-08, proposedGeoTime=0.000195265, bestTime=0.000194337
+
+Iter # 32 config: 0 0 2 2 0 6 0 0 3 1 0 0 3 1 2 1 5 2 : running simulation
+             proposedGeoEDP=4.23411e-08, bestEDP=4.05454e-08, proposedGeoTime=0.00019957, bestTime=0.000194337
+
+Iter # 33 config: 0 0 2 2 0 6 0 0 3 1 0 0 4 1 2 1 5 2 : running simulation
+             proposedGeoEDP=4.01168e-08, bestEDP=4.01168e-08, proposedGeoTime=0.00019309, bestTime=0.00019309
+
+Iter # 34 config: 0 0 2 2 0 6 0 0 3 1 0 0 4 0 2 1 5 2 : running simulation
+             proposedGeoEDP=4.02949e-08, bestEDP=4.01168e-08, proposedGeoTime=0.000193607, bestTime=0.00019309
+
+Iter # 35 config: 0 0 2 2 0 6 0 0 3 1 0 0 4 2 2 1 5 2 : running simulation
+             proposedGeoEDP=3.99881e-08, bestEDP=3.99881e-08, proposedGeoTime=0.000192716, bestTime=0.000192716
+
+Iter # 36 config: 0 0 2 2 0 6 0 0 3 1 0 0 4 3 2 1 5 2 : running simulation
+             proposedGeoEDP=3.99009e-08, bestEDP=3.99009e-08, proposedGeoTime=0.000192462, bestTime=0.000192462
+
+Iter # 37 config: 0 0 2 2 0 6 0 0 3 1 0 0 4 3 0 1 5 2 : running simulation
+             proposedGeoEDP=3.99011e-08, bestEDP=3.99009e-08, proposedGeoTime=0.000192462, bestTime=0.000192462
+
+Iter # 38 config: 0 0 2 2 0 6 0 0 3 1 0 0 4 3 1 1 5 2 : running simulation
+             proposedGeoEDP=3.99011e-08, bestEDP=3.99009e-08, proposedGeoTime=0.000192462, bestTime=0.000192462
+
+Iter # 39 config: 0 0 2 2 0 6 0 0 3 1 0 0 4 3 3 1 5 2 : running simulation
+             proposedGeoEDP=3.99009e-08, bestEDP=3.99009e-08, proposedGeoTime=0.000192462, bestTime=0.000192462
+
+Iter # 40 config: 0 0 2 2 0 6 0 0 3 1 0 0 4 3 4 1 5 2 : running simulation
+             proposedGeoEDP=3.9959e-08, bestEDP=3.99009e-08, proposedGeoTime=0.000192643, bestTime=0.000192462
+
+Iter # 41 config: 1 0 2 2 0 6 0 0 3 1 0 0 4 3 2 1 5 2 : running simulation
+             proposedGeoEDP=4.29531e-08, bestEDP=3.99009e-08, proposedGeoTime=0.000200176, bestTime=0.000192462
+
+Iter # 42 config: 2 0 2 2 0 6 0 0 3 1 0 0 4 3 2 1 5 2 : running simulation
+             proposedGeoEDP=5.26481e-08, bestEDP=3.99009e-08, proposedGeoTime=0.000225365, bestTime=0.000192462
+
+Iter # 43 config: 0 1 2 2 0 6 0 0 3 1 0 0 4 3 2 1 5 2 : running simulation
+             proposedGeoEDP=4.55856e-08, bestEDP=3.99009e-08, proposedGeoTime=0.000207342, bestTime=0.000192462
+
