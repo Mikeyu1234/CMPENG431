@@ -218,7 +218,7 @@ int validateConfiguration(std::string configuration) {
     // } else {
 	// 	return 0;
 	// }
-	cout << width << " " << L1iblockSize << " " << L1dblockSize << endl;
+	cout << width << " " << L1iblockSize << " " << L1dblockSize << " " <<L1iSize << " "<< L1dSize << " "<<L2Size << endl;
     if(width <= L1dblockSize){
         valid++;
 		cout << "valid 1 ";
