@@ -169,11 +169,12 @@ int validateConfiguration(std::string configuration) {
     // } else {
 	// 	return 0;
 	// }
-    if(L1dblockSize % width == 0){
+	// cout << width << " " << L1iblockSize << endl;
+    if(width <= L1dblockSize){
         valid++;
 		// cout << "valid 1 ";
     }
-    if(L1dblockSize == L1iblockSize){
+    if(L1iblockSize == L1dblockSize){
         valid++;
 		// cout << "valid 2 " ;
     }
@@ -190,9 +191,14 @@ int validateConfiguration(std::string configuration) {
 		// cout << "valid 5 " <<endl;
 	}
 
+	if (L2Size >= 2 * (L1iSize+L1dSize)){
+		valid++;
+		// cout << "valid 6 " <<endl;
+	}
+
 	//valid return 1 invalid return 0
 
-	if (valid != 5){
+	if (valid != 6){
 
 		return 0;
 	}
@@ -350,17 +356,22 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 
 		// Signal that DSE is complete after this configuration.
 		if (currentDimIndex == (NUM_DIMS - NUM_DIMS_DEPENDENT)){
-			if (firstBest)
+			// cout << "entering dim done" << endl;
+			if (firstBest){
 				isDSEComplete = true;
+				// cout << "dse complete set true"<< endl;
+			}
 			else{
 				// pass the current best to the baseline and retrain by reseting the table.
 				for (int i=0; i<NUM_DIMS-NUM_DIMS_DEPENDENT; i++)
 					doneDim[i] = -1;
 				currentDimIndex = 0;
+				currentlyExploringDim = EXPLORE[currentDimIndex];
 				firstBest = true;
+				// cout << "first best set true" << endl;
 			}
 		}
-		// cout << nextconfiguration <<endl;
+		cout << nextconfiguration <<endl;
 		// cout << !validateConfiguration(nextconfiguration) <<" " <<GLOB_seen_configurations[nextconfiguration] <<endl;
 	}
 	
