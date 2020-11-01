@@ -84,15 +84,14 @@ std::string generateCacheLatencyParams(string halfBackedConfig) {
 	L2_lat_dm = log2(L2Size);
 
 	//border detection
+	/*
 	if(L1dSize<2 || L1dSize>64)
     	return "0 0 0";
-
     	if(L1iSize<2 || L1iSize>64)
     	return "0 0 0";
-
     	if(L2Size<32 || L2Size>1024)
     	return "0 0 0";
-
+	*/
 	if (token[4] ==1) {
 
 		L1d_lat_dm +=1;
@@ -138,7 +137,6 @@ std::string generateCacheLatencyParams(string halfBackedConfig) {
 	cout<<L1d_lat_dm<<endl;
 	cout<< L1i_lat_dm<<endl;
 	cout<<L2_lat_dm<<endl;
-
 */
 	// This is a dumb implementation.
 	//latencySettings = "1 1 1";
@@ -153,6 +151,19 @@ std::string generateCacheLatencyParams(string halfBackedConfig) {
 	L1d_lat_dm = L1d_lat_dm -1;
 	L1i_lat_dm = L1i_lat_dm -1;
 	L2_lat_dm = L2_lat_dm-5;
+
+	//
+	//this is for invalid setting
+	//
+	if (L1d_lat_dm==-1){
+		L1d_lat_dm =0;
+	}
+	if (L1i_lat_dm ==-1){
+		L1i_lat_dm=0;
+	}
+	if (L2_lat_dm ==-1){
+		L2_lat_dm=0;
+	}
 //	cout<<L1d_lat_dm<<endl;
 //	cout<<L1i_lat_dm<<endl;
 //	cout<<L2_lat_dm<<endl;
@@ -415,5 +426,3 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 	
 	return nextconfiguration;
 }
-
-
