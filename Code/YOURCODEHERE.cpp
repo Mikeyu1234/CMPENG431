@@ -170,23 +170,23 @@ int validateConfiguration(std::string configuration) {
 	// }
     if(L1dblockSize % width == 0){
         valid++;
-		cout << "valid 1 ";
+		// cout << "valid 1 ";
     }
     if(L1dblockSize == L1iblockSize){
         valid++;
-		cout << "valid 2 " ;
+		// cout << "valid 2 " ;
     }
     if(L2blocksize >= 2 * L1iblockSize && L2blocksize <= 128){
         valid++;
-		cout << "valid 3 " ;
+		// cout << "valid 3 " ;
     }
     if(L1iSize >= 2 && L1iSize <= 64){
         valid++;
-		cout << "valid 4 " ;
+		// cout << "valid 4 " ;
     }
     if(L2Size >= 32 && L2Size <= 1024){
         valid++;
-		cout << "valid 5 " <<endl;
+		// cout << "valid 5 " <<endl;
 	}
 
 	//valid return 1 invalid return 0
@@ -240,9 +240,9 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 
 		// Check if DSE has been completed before and return current
 		// configuration.
-		if(isDSEComplete) {
-			return currentconfiguration;
-		}
+		// if(isDSEComplete) {
+		// 	return currentconfiguration;
+		// }
 
 		
 		// Exploring different parameters and continue when there is a change. 
