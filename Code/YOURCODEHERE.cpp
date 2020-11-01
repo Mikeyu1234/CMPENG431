@@ -245,9 +245,14 @@ int validateConfiguration(std::string configuration) {
 		cout << "valid 6 " <<endl;
 	}
 
+	if(L1dSize >= 2 && L1dSize <= 64){
+        valid++;
+		cout << "valid 7 " ;
+    }
+
 	//valid return 1 invalid return 0
 
-	if (valid != 6){
+	if (valid != 7){
 
 		return 0;
 	}
