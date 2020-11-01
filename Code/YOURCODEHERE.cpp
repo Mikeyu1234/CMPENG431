@@ -169,11 +169,12 @@ int validateConfiguration(std::string configuration) {
     // } else {
 	// 	return 0;
 	// }
+	cout << width << " " << L1iblockSize << endl;
     if(width <= L1dblockSize){
         valid++;
 		// cout << "valid 1 ";
     }
-    if(L1iSize == L1dblockSize){
+    if(L1iblockSize == L1dblockSize){
         valid++;
 		// cout << "valid 2 " ;
     }
