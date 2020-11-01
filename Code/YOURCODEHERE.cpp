@@ -190,7 +190,7 @@ int validateConfiguration(std::string configuration) {
 		// cout << "valid 5 " <<endl;
 	}
 
-	if (L2blocksize >= 2 * (L1dblockSize+L1iblockSize)){
+	if (L2Size >= 2 * (L1iSize+L1dSize)){
 		valid++;
 		// cout << "valid 6 " <<endl;
 	}
