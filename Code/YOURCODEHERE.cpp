@@ -350,14 +350,19 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 
 		// Signal that DSE is complete after this configuration.
 		if (currentDimIndex == (NUM_DIMS - NUM_DIMS_DEPENDENT)){
-			if (firstBest)
+			cout << "entering dim done" << endl;
+			if (firstBest){
 				isDSEComplete = true;
+				cout << "dse complete set true"<< endl;
+			}
 			else{
 				// pass the current best to the baseline and retrain by reseting the table.
 				for (int i=0; i<NUM_DIMS-NUM_DIMS_DEPENDENT; i++)
 					doneDim[i] = -1;
 				currentDimIndex = 0;
+				currentlyExploringDim = EXPLORE[currentDimIndex];
 				firstBest = true;
+				cout << "first best set true" << endl;
 			}
 		}
 		// cout << nextconfiguration <<endl;
