@@ -169,13 +169,13 @@ std::string generateCacheLatencyParams(string halfBackedConfig) {
 //	cout<<L2_lat_dm<<endl;
 
 	char c_string[5];
-	sprintf(c_string, "%d", L1d_lat_dm);
+	// sprintf(c_string, "%d", L1d_lat_dm);
 	latencySettings += std::string(c_string);
 	latencySettings += " ";
-	sprintf(c_string, "%d", L1i_lat_dm);
+	// sprintf(c_string, "%d", L1i_lat_dm);
 	latencySettings += std::string(c_string);
 	latencySettings += " ";
-	sprintf(c_string, "%d", L2_lat_dm);
+	// sprintf(c_string, "%d", L2_lat_dm);
 	latencySettings += std::string(c_string);
 
 
@@ -221,33 +221,33 @@ int validateConfiguration(std::string configuration) {
 	cout << width << " " << L1iblockSize << " " << L1dblockSize << " " <<L1iSize << " "<< L1dSize << " "<<L2Size << endl;
     if(width <= L1dblockSize){
         valid++;
-		cout << "valid 1 ";
+		// cout << "valid 1 ";
     }
     if(L1iblockSize == L1dblockSize){
         valid++;
-		cout << "valid 2 " ;
+		// cout << "valid 2 " ;
     }
     if(L2blocksize >= 2 * L1iblockSize && L2blocksize <= 128){
         valid++;
-		cout << "valid 3 " ;
+		// cout << "valid 3 " ;
     }
     if(L1iSize >= 2 && L1iSize <= 64){
         valid++;
-		cout << "valid 4 " ;
+		// cout << "valid 4 " ;
     }
     if(L2Size >= 32 && L2Size <= 1024){
         valid++;
-		cout << "valid 5 " <<endl;
+		// cout << "valid 5 " ;
 	}
 
 	if (L2Size >= 2 * (L1iSize+L1dSize)){
 		valid++;
-		cout << "valid 6 " <<endl;
+		// cout << "valid 6 " ;
 	}
 
 	if(L1dSize >= 2 && L1dSize <= 64){
         valid++;
-		cout << "valid 7 " ;
+		// cout << "valid 7 " << endl;
     }
 
 	//valid return 1 invalid return 0
@@ -425,7 +425,7 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 				// cout << "first best set true" << endl;
 			}
 		}
-		cout << nextconfiguration <<endl;
+		// cout << nextconfiguration <<endl;
 		// cout << !validateConfiguration(nextconfiguration) <<" " <<GLOB_seen_configurations[nextconfiguration] <<endl;
 	}
 	
