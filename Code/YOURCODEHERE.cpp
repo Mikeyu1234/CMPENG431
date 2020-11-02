@@ -169,13 +169,13 @@ std::string generateCacheLatencyParams(string halfBackedConfig) {
 //	cout<<L2_lat_dm<<endl;
 
 	char c_string[5];
-	// sprintf(c_string, "%d", L1d_lat_dm);
+	sprintf(c_string, "%d", L1d_lat_dm);
 	latencySettings += std::string(c_string);
 	latencySettings += " ";
-	// sprintf(c_string, "%d", L1i_lat_dm);
+	sprintf(c_string, "%d", L1i_lat_dm);
 	latencySettings += std::string(c_string);
 	latencySettings += " ";
-	// sprintf(c_string, "%d", L2_lat_dm);
+	sprintf(c_string, "%d", L2_lat_dm);
 	latencySettings += std::string(c_string);
 
 
