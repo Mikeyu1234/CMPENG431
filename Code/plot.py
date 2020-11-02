@@ -22,5 +22,18 @@ for i in result:
     bestEDP.append(i[1])
 for i in range(len(bestEDP)):
     x.append(i)
+plt.title("bestEDP over iteration")
+plt.xlabel("iteration")
+plt.ylabel("bestEDP")
 plt.scatter(x,bestEDP)
+plt.plot(x,bestEDP)
 plt.show()
+
+#plot best time
+plt.title("best time over iteration")
+plt.xlabel("iteration")
+plt.ylabel("bestTime")
+plt.scatter(x,bestTime)
+plt.plot(x,bestTime)
+plt.show()
+
