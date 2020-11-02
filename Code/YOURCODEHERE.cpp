@@ -422,6 +422,8 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 				currentDimIndex = 0;
 				currentlyExploringDim = EXPLORE[currentDimIndex];
 				firstBest = true;
+				nextconfiguration = bestConfig;
+				currentconfiguration = bestConfig;
 				// cout << "first best set true" << endl;
 			}
 		}
