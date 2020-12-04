@@ -87,10 +87,8 @@ std::string generateCacheLatencyParams(string halfBackedConfig) {
 	/*
 	if(L1dSize<2 || L1dSize>64)
     	return "0 0 0";
-
     	if(L1iSize<2 || L1iSize>64)
     	return "0 0 0";
-
     	if(L2Size<32 || L2Size>1024)
     	return "0 0 0";
 
@@ -140,7 +138,6 @@ std::string generateCacheLatencyParams(string halfBackedConfig) {
 	cout<<L1d_lat_dm<<endl;
 	cout<< L1i_lat_dm<<endl;
 	cout<<L2_lat_dm<<endl;
-
 */
 	// This is a dumb implementation.
 	//latencySettings = "1 1 1";
@@ -222,7 +219,7 @@ int validateConfiguration(std::string configuration) {
     // } else {
 	// 	return 0;
 	// }
-	// cout << width << " " << L1iblockSize << endl;
+	// cout << width << " " << L1iblockSize << " " << L1dblockSize << " " <<L1iSize << " "<< L1dSize << " "<<L2Size << endl;
     if(width <= L1dblockSize){
         valid++;
 		// cout << "valid 1 ";
@@ -241,17 +238,22 @@ int validateConfiguration(std::string configuration) {
     }
     if(L2Size >= 32 && L2Size <= 1024){
         valid++;
-		// cout << "valid 5 " <<endl;
+		// cout << "valid 5 " ;
 	}
 
 	if (L2Size >= 2 * (L1iSize+L1dSize)){
 		valid++;
-		// cout << "valid 6 " <<endl;
+		// cout << "valid 6 " ;
 	}
+
+	if(L1dSize >= 2 && L1dSize <= 64){
+        valid++;
+		// cout << "valid 7 " << endl;
+    }
 
 	//valid return 1 invalid return 0
 
-	if (valid != 6){
+	if (valid != 7){
 
 		return 0;
 	}
@@ -421,14 +423,14 @@ std::string generateNextConfigurationProposal(std::string currentconfiguration,
 				currentDimIndex = 0;
 				currentlyExploringDim = EXPLORE[currentDimIndex];
 				firstBest = true;
+				nextconfiguration = bestConfig;
+				currentconfiguration = bestConfig;
 				// cout << "first best set true" << endl;
 			}
 		}
-		cout << nextconfiguration <<endl;
+		// cout << nextconfiguration <<endl;
 		// cout << !validateConfiguration(nextconfiguration) <<" " <<GLOB_seen_configurations[nextconfiguration] <<endl;
 	}
 	
 	return nextconfiguration;
 }
-
-
